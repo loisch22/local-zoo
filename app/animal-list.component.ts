@@ -8,7 +8,7 @@ import { Animal } from './animal.model';
 
 
   <ul>
-    <li (click)="isDone(currentTask)" *ngFor="let currentAnimal of childAnimalList">
+    <li *ngFor="let currentAnimal of childAnimalList">
     <strong>Species: </strong> {{currentAnimal.species}}
     <br>
     <strong>Name: </strong> {{currentAnimal.name}}
@@ -47,18 +47,7 @@ export class AnimalListComponent {
   editButtonHasBeenClicked(animalToEdit: Animal) {
     this.clickSender.emit(animalToEdit);
   }
-  //
-  // toggleDone(clickedTask: Task, setCompleteness: boolean) {
-  //   clickedTask.done = setCompleteness;
-  // }
-  //
-  // isDone(clickedTask: Task) {
-  //   if(clickedTask.done === true) {
-  //     alert("This task is done!");
-  //   } else {
-  //     alert("This task is not done. Better get to work!");
-  //   }
-  // }
+
   //
   // priorityColor(currentTask) {
   //   if(currentTask.priority === 3) {

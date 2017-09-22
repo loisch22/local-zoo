@@ -8,15 +8,14 @@ import { Animal } from './animal.model';
     <h1>Animals you can visit at our zoo on {{month}}/{{day}}/{{year}}</h1>
     <animal-list [childAnimalList]="masterAnimalList" (clickSender)="editAnimal($event)"></animal-list>
     <hr>
+
     <edit-animal [childSelectedAnimal]="selectedAnimal" (doneButtonClickedSender)="finishedEditing()"></edit-animal>
     <new-animal (newAnimalSender)="addAnimal($event)"></new-animal>
 
   </div>
   `
 })
-//*ngFor = Angular's repeater directive
 
-//below is the class def: defines how it behaves
 export class AppComponent {
   currentTime = new Date();
   month: number = this.currentTime.getMonth() + 1;
@@ -42,7 +41,3 @@ export class AppComponent {
     this.masterAnimalList.push(newAnimalFromChild);
   }
 }
-//
-//
-
-// <new-task (newTaskSender)="addTask($event)"></new-task>
