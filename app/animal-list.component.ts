@@ -1,58 +1,80 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Task } from './task.model';
+import { Animal } from './animal.model';
 
 
 @Component({
-  selector: 'task-list',
+  selector: 'animal-list',
   template: `
-  <select (change)="onChange($event.target.value)">
-    <option value="allTasks">All Tasks</option>
-    <option value="completedTasks">Completed Tasks</option>
-    <option value="incompleteTasks" selected="selected">Incomplete Tasks</option>
-  </select>
+
 
   <ul>
-    <li (click)="isDone(currentTask)" *ngFor="let currentTask of childTaskList | completeness:filterByCompleteness">{{currentTask.description}} {{currentTask.priority}}
-    <input *ngIf="currentTask.done === true" type="checkbox" checked (click)="toggleDone(currentTask, false)"/>
-    <input *ngIf="currentTask.done === false" type="checkbox" (click)="toggleDone(currentTask, true)"/>
-    <button (click)="editButtonHasBeenClicked(currentTask)">Edit!</button></li>
+    <li (click)="isDone(currentTask)" *ngFor="let currentAnimal of childAnimalList">
+    <strong>Species: </strong> {{currentAnimal.species}}
+    <br>
+    <strong>Name: </strong> {{currentAnimal.name}}
+    <br>
+    <strong>Age: </strong> {{currentAnimal.age}}
+    <br>
+    <strong>Diet: </strong> {{currentAnimal.diet}}
+    <br>
+    <strong>Location: </strong>  {{currentAnimal.location}}
+    <br>
+    <strong>Caretakers: </strong> {{currentAnimal.caretakers}}
+    <br>
+    <strong>Sex: </strong> {{currentAnimal.sex}}
+    <br>
+    <strong>Likes: </strong> {{currentAnimal.likes}}
+    <br>
+    <strong>Dislikes: </strong> {{currentAnimal.dislikes}}
+    <hr>
+    </li>
   </ul>
   `
 })
 
-export class TaskListComponent {
-  @Input() childTaskList: Task[];
-  @Output() clickSender = new EventEmitter();
-
-  filterByCompleteness: string = "incompleteTasks";
-
-  onChange(optionFromMenu) {
-    this.filterByCompleteness = optionFromMenu;
-  }
-
-  editButtonHasBeenClicked(taskToEdit: Task) {
-    this.clickSender.emit(taskToEdit);
-  }
-
-  toggleDone(clickedTask: Task, setCompleteness: boolean) {
-    clickedTask.done = setCompleteness;
-  }
-
-  isDone(clickedTask: Task) {
-    if(clickedTask.done === true) {
-      alert("This task is done!");
-    } else {
-      alert("This task is not done. Better get to work!");
-    }
-  }
-
-  priorityColor(currentTask) {
-    if(currentTask.priority === 3) {
-      return "bg-danger";
-    } else if (currentTask.priority === 2) {
-      return "bg-warning";
-    } else {
-      return "bg-info";
-    }
-  }
+export class AnimalListComponent {
+  @Input() childAnimalList: Animal[];
+  // @Output() clickSender = new EventEmitter();
+  //
+  // filterByCompleteness: string = "incompleteTasks";
+  //
+  // onChange(optionFromMenu) {
+  //   this.filterByCompleteness = optionFromMenu;
+  // }
+  //
+  // editButtonHasBeenClicked(taskToEdit: Task) {
+  //   this.clickSender.emit(taskToEdit);
+  // }
+  //
+  // toggleDone(clickedTask: Task, setCompleteness: boolean) {
+  //   clickedTask.done = setCompleteness;
+  // }
+  //
+  // isDone(clickedTask: Task) {
+  //   if(clickedTask.done === true) {
+  //     alert("This task is done!");
+  //   } else {
+  //     alert("This task is not done. Better get to work!");
+  //   }
+  // }
+  //
+  // priorityColor(currentTask) {
+  //   if(currentTask.priority === 3) {
+  //     return "bg-danger";
+  //   } else if (currentTask.priority === 2) {
+  //     return "bg-warning";
+  //   } else {
+  //     return "bg-info";
+  //   }
+  // }
 }
+//
+// <select (change)="onChange($event.target.value)">
+//   <option value="allTasks">All Tasks</option>
+//   <option value="completedTasks">Completed Tasks</option>
+//   <option value="incompleteTasks" selected="selected">Incomplete Tasks</option>
+// </select>
+
+// <input *ngIf="currentTask.done === true" type="checkbox" checked (click)="toggleDone(currentTask, false)"/>
+// <input *ngIf="currentTask.done === false" type="checkbox" (click)="toggleDone(currentTask, true)"/>
+// <button (click)="editButtonHasBeenClicked(currentTask)">Edit!</button>
