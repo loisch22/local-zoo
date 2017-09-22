@@ -4,14 +4,17 @@ import { Animal } from './animal.model';
 @Component({
   selector: 'app-root',
   template: `
+  <div class="image-cover">
+    <h1 class="header">Animals at Our Zoo
+    <br>
+    {{month}}/{{day}}/{{year}}</h1>
+  </div>
+
   <div class="container">
-    <h1>Animals you can visit at our zoo on {{month}}/{{day}}/{{year}}</h1>
     <animal-list [childAnimalList]="masterAnimalList" (clickSender)="editAnimal($event)"></animal-list>
-    <hr>
 
     <edit-animal [childSelectedAnimal]="selectedAnimal" (doneButtonClickedSender)="finishedEditing()"></edit-animal>
     <new-animal (newAnimalSender)="addAnimal($event)"></new-animal>
-
   </div>
   `
 })

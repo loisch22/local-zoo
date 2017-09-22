@@ -1,0 +1,44 @@
+body {
+  background: #1F7F89;
+}
+.header {
+  text-align: center;
+  margin:0;
+  padding: 11%;
+  color: #ffffff;
+  letter-spacing: 10px;
+  font-size: 60px;
+  text-shadow: 2px 2px #404040;
+}
+.image-cover {
+  margin: 0;
+  background-image: url("http://www.wildlifeworld.com/wp-content/uploads/2015/01/orion6.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 50%;
+  width: 100vw;
+}
+.select-filter {
+  margin: 30px 20px 30px 100%;
+  float: right;
+  padding: 15px;
+  font-size: 16px;
+  letter-spacing: 3px;
+}
+li {
+  list-style-type: none;
+}
+.animal-list {
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+.species {
+  font-size: 22px;
+  letter-spacing: 4px;
+}
+.edit-btn {
+  float: right;
+  padding: 2px 10px;
+  letter-spacing: 1px;
+}

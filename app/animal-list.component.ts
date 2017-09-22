@@ -5,36 +5,38 @@ import { Animal } from './animal.model';
 @Component({
   selector: 'animal-list',
   template: `
-   <select (change)="onChange($event.target.value)">
+   <select class="select-filter" (change)="onChange($event.target.value)">
      <option value="allAnimals" selected="selected">All Animals</option>
      <option value="mature">Mature Animals</option>
      <option value="young">Young Animals</option>
    </select>
 
-  <ul>
-    <li *ngFor="let currentAnimal of childAnimalList | filterness:animalAgeFilter">
-    <strong>Species: </strong> {{currentAnimal.species}}
-    <br>
-    <strong>Name: </strong> {{currentAnimal.name}}
-    <br>
-    <strong>Age: </strong> {{currentAnimal.age}}
-    <br>
-    <strong>Diet: </strong> {{currentAnimal.diet}}
-    <br>
-    <strong>Location: </strong>  {{currentAnimal.location}}
-    <br>
-    <strong>Caretakers: </strong> {{currentAnimal.caretakers}}
-    <br>
-    <strong>Sex: </strong> {{currentAnimal.sex}}
-    <br>
-    <strong>Likes: </strong> {{currentAnimal.likes}}
-    <br>
-    <strong>Dislikes: </strong> {{currentAnimal.dislikes}}
-    <button (click)="editButtonHasBeenClicked(currentAnimal)">Edit!</button>
+  <div class="animal-list">
+    <ul>
+      <li *ngFor="let currentAnimal of childAnimalList | filterness:animalAgeFilter">
+        <span class="species"><strong>Species: </strong> {{currentAnimal.species}}</span>
 
-    <hr>
-    </li>
-  </ul>
+        <button class="btn btn-default edit-btn" (click)="editButtonHasBeenClicked(currentAnimal)">Edit</button>
+        <br>
+        <strong>Name: </strong> {{currentAnimal.name}}
+        <br>
+        <strong>Age: </strong> {{currentAnimal.age}}
+        <br>
+        <strong>Diet: </strong> {{currentAnimal.diet}}
+        <br>
+        <strong>Location: </strong>  {{currentAnimal.location}}
+        <br>
+        <strong>Caretakers: </strong> {{currentAnimal.caretakers}}
+        <br>
+        <strong>Sex: </strong> {{currentAnimal.sex}}
+        <br>
+        <strong>Likes: </strong> {{currentAnimal.likes}}
+        <br>
+        <strong>Dislikes: </strong> {{currentAnimal.dislikes}}
+        <hr>
+      </li>
+    </ul>
+  </div>
   `
 })
 
@@ -51,15 +53,4 @@ export class AnimalListComponent {
   editButtonHasBeenClicked(animalToEdit: Animal) {
     this.clickSender.emit(animalToEdit);
   }
-
-  //
-  // priorityColor(currentTask) {
-  //   if(currentTask.priority === 3) {
-  //     return "bg-danger";
-  //   } else if (currentTask.priority === 2) {
-  //     return "bg-warning";
-  //   } else {
-  //     return "bg-info";
-  //   }
-  // }
 }
