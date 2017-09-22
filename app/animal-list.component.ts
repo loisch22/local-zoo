@@ -5,10 +5,14 @@ import { Animal } from './animal.model';
 @Component({
   selector: 'animal-list',
   template: `
-
+   <select (change)="onChange($event.target.value)">
+     <option value="allAnimals" selected="selected">All Animals</option>
+     <option value="mature">Mature Animals</option>
+     <option value="young">Young Animals</option>
+   </select>
 
   <ul>
-    <li *ngFor="let currentAnimal of childAnimalList">
+    <li *ngFor="let currentAnimal of childAnimalList | filterness:animalAgeFilter">
     <strong>Species: </strong> {{currentAnimal.species}}
     <br>
     <strong>Name: </strong> {{currentAnimal.name}}
@@ -37,13 +41,13 @@ import { Animal } from './animal.model';
 export class AnimalListComponent {
   @Input() childAnimalList: Animal[];
   @Output() clickSender = new EventEmitter();
-  //
-  // filterByCompleteness: string = "incompleteTasks";
-  //
-  // onChange(optionFromMenu) {
-  //   this.filterByCompleteness = optionFromMenu;
-  // }
-  //
+
+  animalAgeFilter: string = "allAnimals";
+
+  onChange(optionFromMenu) {
+    this.animalAgeFilter = optionFromMenu;
+  }
+
   editButtonHasBeenClicked(animalToEdit: Animal) {
     this.clickSender.emit(animalToEdit);
   }
@@ -59,12 +63,3 @@ export class AnimalListComponent {
   //   }
   // }
 }
-//
-// <select (change)="onChange($event.target.value)">
-//   <option value="allTasks">All Tasks</option>
-//   <option value="completedTasks">Completed Tasks</option>
-//   <option value="incompleteTasks" selected="selected">Incomplete Tasks</option>
-// </select>
-
-// <input *ngIf="currentTask.done === true" type="checkbox" checked (click)="toggleDone(currentTask, false)"/>
-// <input *ngIf="currentTask.done === false" type="checkbox" (click)="toggleDone(currentTask, true)"/>
