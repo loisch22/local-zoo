@@ -34,6 +34,8 @@ _1. Download github repository: <a>https://github.com/loisch22/local-zoo</a>_
 |
 | 7. Show animals based on diet type. Then, show all animals who eat meat (carnivores AND omnivores)
 |
+| 8. Show image of animals with each species
+|
 
 ## Known Bugs
 

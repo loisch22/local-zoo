@@ -9,6 +9,8 @@ import { Animal } from './animal.model';
     <animal-list [childAnimalList]="masterAnimalList" (clickSender)="editAnimal($event)"></animal-list>
     <hr>
 
+    <new-animal (newAnimalSender)="addAnimal($event)"></new-animal>
+
   </div>
   `
 })
@@ -36,9 +38,9 @@ export class AppComponent {
   //   this.selectedTask = null;
   // }
   //
-  // addTask(newTaskFromChild: Task) {
-  //   this.masterTaskList.push(newTaskFromChild);
-  // }
+  addAnimal(newAnimalFromChild: Animal) {
+    this.masterAnimalList.push(newAnimalFromChild);
+  }
 }
 //
 //
