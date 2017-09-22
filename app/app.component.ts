@@ -8,7 +8,7 @@ import { Animal } from './animal.model';
     <h1>Animals you can visit at our zoo on {{month}}/{{day}}/{{year}}</h1>
     <animal-list [childAnimalList]="masterAnimalList" (clickSender)="editAnimal($event)"></animal-list>
     <hr>
-
+    <edit-animal [childSelectedAnimal]="selectedAnimal" (doneButtonClickedSender)="finishedEditing()"></edit-animal>
     <new-animal (newAnimalSender)="addAnimal($event)"></new-animal>
 
   </div>
@@ -30,19 +30,19 @@ export class AppComponent {
     new Animal('Northwest Black Tailed Deer', 'Tinkerbell', 8, 'Herbivore', 'Norther Trail', 2, 'female', 'Delicate roots and leaves', 'Loud noises')
   ];
 
-  // editTask(clickedTask) {
-  //   this.selectedTask = clickedTask;
-  // }
-  //
-  // finishedEditing() {
-  //   this.selectedTask = null;
-  // }
-  //
+  editAnimal(clickedAnimal) {
+    this.selectedAnimal = clickedAnimal;
+  }
+
+  finishedEditing() {
+    this.selectedAnimal = null;
+  }
+
   addAnimal(newAnimalFromChild: Animal) {
     this.masterAnimalList.push(newAnimalFromChild);
   }
 }
 //
 //
-// <edit-task [childSelectedTask]="selectedTask" (doneButtonClickedSender)="finishedEditing()"></edit-task>
+
 // <new-task (newTaskSender)="addTask($event)"></new-task>

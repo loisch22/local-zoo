@@ -7,19 +7,19 @@ import { Animal } from './animal.model';
     <h1>New Animal</h1>
     <div>
       <label>Animal Species:</label>
-      <input #newSpecies>
+      <input #newSpecies require>
       <label>Animal Name:</label>
-      <input #newName>
+      <input #newName require>
       <label>Animal Age:</label>
-      <input #newAge>
+      <input #newAge require>
       <label>Animal Diet:</label>
-      <input #newDiet>
+      <input #newDiet require>
       <label>Animal Location:</label>
-      <input #newLocation>
+      <input #newLocation require>
       <label>Animal Caretakers:</label>
-      <input #newCaretakers>
+      <input #newCaretakers require>
       <label>Animal Sex:</label>
-      <input #newSex>
+      <input #newSex require>
       <label>Animal Likes:</label>
       <input #newLikes>
       <label>Animal Dislikes:</label>

@@ -26,6 +26,8 @@ import { Animal } from './animal.model';
     <strong>Likes: </strong> {{currentAnimal.likes}}
     <br>
     <strong>Dislikes: </strong> {{currentAnimal.dislikes}}
+    <button (click)="editButtonHasBeenClicked(currentAnimal)">Edit!</button>
+
     <hr>
     </li>
   </ul>
@@ -34,7 +36,7 @@ import { Animal } from './animal.model';
 
 export class AnimalListComponent {
   @Input() childAnimalList: Animal[];
-  // @Output() clickSender = new EventEmitter();
+  @Output() clickSender = new EventEmitter();
   //
   // filterByCompleteness: string = "incompleteTasks";
   //
@@ -42,9 +44,9 @@ export class AnimalListComponent {
   //   this.filterByCompleteness = optionFromMenu;
   // }
   //
-  // editButtonHasBeenClicked(taskToEdit: Task) {
-  //   this.clickSender.emit(taskToEdit);
-  // }
+  editButtonHasBeenClicked(animalToEdit: Animal) {
+    this.clickSender.emit(animalToEdit);
+  }
   //
   // toggleDone(clickedTask: Task, setCompleteness: boolean) {
   //   clickedTask.done = setCompleteness;
@@ -77,4 +79,3 @@ export class AnimalListComponent {
 
 // <input *ngIf="currentTask.done === true" type="checkbox" checked (click)="toggleDone(currentTask, false)"/>
 // <input *ngIf="currentTask.done === false" type="checkbox" (click)="toggleDone(currentTask, true)"/>
-// <button (click)="editButtonHasBeenClicked(currentTask)">Edit!</button>
